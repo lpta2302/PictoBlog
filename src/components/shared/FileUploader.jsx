@@ -114,7 +114,7 @@ export default function FileUploader({
                                 width={140}
                                 className="dark:make-white brightness-0"
                             />
-                            <p className="text-small text-center dark:text-slate-gray">
+                            <p className="text-small text-center dark:text-subtitle">
                                 Drag image here or Click to select from browser
                             </p>
                         </div>

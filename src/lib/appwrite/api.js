@@ -304,7 +304,7 @@ export async function savePostToDataBase(post) {
 
 export async function createPost(post) {
   try {
-    const { caption, location, attachment, creator } = post;
+    const { caption, location, attachment, creator, is_public } = post;
     let { tags } = post;
 
     const uploadedFile = await uploadFile(attachment[0]);
@@ -331,6 +331,7 @@ export async function createPost(post) {
         imageId: uploadedFile.$id,
         imageUrl,
         location,
+        isPublic:is_public
       },
     );
 
@@ -366,13 +367,14 @@ export async function deletePost({ $id: postId, imageId }) {
 // ----------------------- UPDATE POST -----------------------
 export async function updatePost(post, postId) {
   try {
-    const { caption, location, attachment } = post;
+    const { caption, location, attachment, is_public } = post;
     const tags = post.tags.replace(/\s/g, '').split(',');
 
     const res = {
       caption,
       location,
       tags,
+      isPublic:is_public
     };
 
     if (attachment.length > 0) {
@@ -411,7 +413,11 @@ export async function updatePost(post, postId) {
 export async function getExplorePosts(pageParam, filters) {
   filters = filters.map((filter) => Query.notEqual('$id', filter));
 
-  const queries = [Query.orderDesc('$createdAt'), Query.limit(10)];
+  const queries = [
+    Query.orderDesc('$createdAt'),
+    Query.equal('isPublic', true),
+    Query.limit(10),
+  ];
 
   if (filters) queries.push(...filters);
 

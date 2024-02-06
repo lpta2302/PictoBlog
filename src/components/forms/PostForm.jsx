@@ -29,6 +29,7 @@ function PostForm({ post, action: { type: actionType, ...rest } }) {
       setValue('caption', post?.caption);
       setValue('tags', post?.tags.join(','));
       setValue('location', post?.location);
+      setValue('is_public', post?.isPublic);
     }
   }, [post]);
 
@@ -37,6 +38,7 @@ function PostForm({ post, action: { type: actionType, ...rest } }) {
     handleSubmit,
     reset,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -135,10 +137,11 @@ function PostForm({ post, action: { type: actionType, ...rest } }) {
       <CheckBox
         label1="Just Friend"
         label2="Public"
-        id="public"
-        name="public"
+        id="is_public"
+        name="is_public"
         register={register}
         setValue={setValue}
+        getValue={getValues}
       ></CheckBox>
       <div className="mx-auto w-[30vw] mt-10">
         <Button>

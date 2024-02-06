@@ -36,17 +36,13 @@ export default {
 
         white: "#fefefe",
         "off-white": "#E4E4E4",
-        "slate-gray": "#708090",
+
         "dark-bg": "#000",
         "light-bg": "#fbfbfb",
 
         "dark-item": "#080808",
         "dark-3": "#101012",
         "dark-4": "#1F1F22",
-        "light-1": "#FFFFFF",
-        "light-2": "#EFEFEF",
-        "light-3": "#7878A3",
-        "light-4": "#5C5C7B",
       },
       maxWidth: {
         wide: "1440px",
@@ -56,11 +52,6 @@ export default {
         sm: "472px",
       },
       keyframes: {
-        fullSpin: {
-          "100%": {
-            transform: "rotate(-360deg)",
-          },
-        },
         slideIn: {
           from: {
             opacity: "0",
@@ -109,7 +100,6 @@ export default {
           "3px 3px 10px 0 rgba(0, 0, 0, 0.1)",
       },
       animation: {
-        fullSpin: "fullSpin 3s linear infinite",
         slideIn: "slideIn 0.2s linear forwards",
         slideOut: "slideOut 0.2s linear forwards",
         slideUp: "slideUp 0.2s linear forwards",

@@ -67,7 +67,7 @@ function PostState({ post, userId }) {
                         className="hover:brightness-125 dark:hover:opacity-80 dark:make-white transition w-5 h-5"
                     />
                 </button>
-                <p className="text-slate-gray">{likes?.length}</p>
+                <p className="text-subtitle">{likes?.length}</p>
             </div>
             <button onClick={handleSave}>
                 <img

@@ -18,6 +18,7 @@ export { default as returnIcon } from "./return.png";
 export { default as menu } from "./menu.png";
 export { default as home } from "./home.svg";
 export { default as explore } from "./explore.svg";
+export { default as globe } from "./globe.png";
 export { default as people } from "./friend.png";
 export { default as addPost } from "./create-post.png";
 export { default as searchNav } from "./search.png";

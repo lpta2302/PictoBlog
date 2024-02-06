@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 
 export default function CheckBox({
-  children,
   name,
   id,
   label1,
   label2,
   register,
   setValue,
+  getValue,
 }) {
-  const [active, setActive] = useState(false);
+  console.log(getValue, getValue ? getValue(name) : '');
+  const [active, setActive] = useState(getValue ? getValue(name) || false : false);
 
   useEffect(() => setValue(name, active), [active]);
 
