@@ -7,7 +7,7 @@ import {
 
 export default function RootLayout() {
   return (
-    <div className="flex lg:pl-40 lg:pt-0 xs:pt-[104px] pt-[60px] max-xs:pb-10 max-container">
+    <div className="flex lg:pl-40 lg:pt-0 xs:pt-[120px] pt-[60px] max-xs:pb-10 max-container">
       <TopNavbar />
       <LeftNavbar />
 

@@ -331,7 +331,7 @@ export async function createPost(post) {
         imageId: uploadedFile.$id,
         imageUrl,
         location,
-        isPublic:is_public
+        isPublic: is_public,
       },
     );
 
@@ -374,7 +374,7 @@ export async function updatePost(post, postId) {
       caption,
       location,
       tags,
-      isPublic:is_public
+      isPublic: is_public,
     };
 
     if (attachment.length > 0) {
@@ -440,12 +440,38 @@ export async function getExplorePosts(pageParam, filters) {
 
 // ----------------------- GET RECENT POST -----------------------
 
-export async function getRecentPosts() {
+export async function getRecentPosts({ usersId, ownPostsId }) {
   try {
+    console.log(ownPostsId);
+    const queriedPostId = [...ownPostsId];
+
+    if (usersId.length > 0) {
+      const users = await databases.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.usersColectionId,
+        [Query.equal('$id', usersId)],
+      );
+
+      if (!users) throw Error;
+
+      const postsId = users.documents.reduce(
+        (acc, user) => [...acc, ...user.posts.map((post) => post.$id)],
+        [],
+      );
+
+      queriedPostId.push(...postsId);
+    }
+
+    if (queriedPostId.length === 0) return [];
+
     const recentPosts = await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.postsColectionId,
-      [Query.orderDesc('$createdAt'), Query.limit(20)],
+      [
+        Query.orderDesc('$createdAt'),
+        Query.limit(20),
+        Query.equal('$id', queriedPostId),
+      ],
     );
 
     if (!recentPosts) throw Error;

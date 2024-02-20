@@ -10,7 +10,9 @@ export default function CheckBox({
   getValue,
 }) {
   console.log(getValue, getValue ? getValue(name) : '');
-  const [active, setActive] = useState(getValue ? getValue(name) || false : false);
+  const [active, setActive] = useState(
+    getValue ? getValue(name) || false : false,
+  );
 
   useEffect(() => setValue(name, active), [active]);
 
@@ -29,11 +31,7 @@ export default function CheckBox({
         htmlFor={id}
         className={`
             relative h-8 w-16 rounded-full transition-colors
-            ${
-              active
-                ? 'dark:bg-sky-300 bg-white'
-                : 'dark:bg-dark-4 bg-off-white'
-            }
+            ${active ? 'bg-sky-400' : 'dark:bg-dark-4 bg-off-white'}
         `}
       >
         <input
@@ -47,7 +45,7 @@ export default function CheckBox({
         />
         <div
           className={`
-            w-6 h-6 absolute left-1 pos-mid rounded-full dark:bg-white bg-primary-1 transition
+            w-6 h-6 absolute left-1 pos-mid rounded-full dark:bg-white bg-white transition
             ${active ? 'translate-x-8' : ''}
           `}
         ></div>

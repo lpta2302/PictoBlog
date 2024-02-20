@@ -147,10 +147,11 @@ export const useUpdatePost = () => {
 };
 
 // ----------------------- GET RECENT POST -----------------------
-export const useGetRecentPosts = () => {
+export const useGetRecentPosts = (usersId) => {
   return useQuery({
     queryKey: [QUERYKEYS.GET_RECENT_POST],
-    queryFn: getRecentPosts,
+    queryFn: ()=>getRecentPosts(usersId),
+    enabled:!!usersId
   });
 };
 

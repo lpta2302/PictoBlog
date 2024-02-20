@@ -6,10 +6,10 @@ import ToggleTheme from '../shared/ToggleTheme';
 import { forwardRef } from 'react';
 
 const position = {
-  'left': 'top-0 left-[calc(100%+1px)] animate-slideIn',
+  left: 'top-0 left-[calc(100%+1px)] animate-slideIn',
   'top-left': 'top-[calc(100%+1px)] left-0 animate-slideDown',
   'top-right': 'top-[calc(100%+1px)] right-0 animate-slideDown',
-  'right': 'top-0 right-[calc(100%+1px)]',
+  right: 'top-0 right-[calc(100%+1px)]',
 };
 
 const SubNavbar = ({ pos }, ref) => {
